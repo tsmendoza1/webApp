@@ -1,0 +1,55 @@
+{% load static %}
+
+<html lang="sp" class="styles">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type='text/css' href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <a href="{% url 'login' %}" style="
+    display: flex;
+    color: white;
+    text-align: end;
+    flex-direction: column;
+    text-decoration: none;">Salir</a>
+    <h1> Bienvenido </h1>
+    <h1>¿Que deseas hacer hoy?</h1>
+    <div class="grid-container">
+        <div class="grid-item"  >
+            <a href="{% url 'derivatives' %}" style="
+            color: black;
+            text-decoration: none;">DERIVADAS</a>
+            <p style="font-size: small;"> Aplica la derivada a diferentes funciones </p>
+        </div>
+        <div class="grid-item">
+            <a href="{% url 'limits' %}" style="
+                color: black;
+                text-decoration: none;">LIMITES</a>
+            <p style="font-size: small;"> Calcula el limite de varias funciones </p>
+        </div>
+        <div class="grid-item">
+            <a href="{% url 'function' %}" style="
+                color: Black;
+                text-decoration: none;">FUNCIONES</a>
+        </div>
+        <div class="grid-item">
+            <a href="{% url 'graphics' %}" style="
+                color: black;
+                text-decoration: none;">GRÁFICAS</a>
+            <p style="font-size: small;"> Grafica funciones lineales, parabolas, etc</p>
+        </div>
+        <div class="grid-item" >
+            <a href="{% url 'radicals' %}" style="
+                color: black;
+                text-decoration: none;">RADICALES</a>
+        </div>
+        <div class="grid-item">
+            <a href="{% url 'factor' %}" style="
+                color: black;
+                text-decoration: none;">FSCTORIZACIÓN</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="limits">
+<head>
+    <a href="{% url 'home' %}" style="color: white;">Regresar</a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limites</title>
+    <link rel="stylesheet" href="{% static 'css/limits.css' %}">
+</head>
+<body>
+    <h1>Calculadora de Límites</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if result_data %}
+    <h2>Resultado</h2>
+    <p>x = {{ result_data.0.0|floatformat:3 }}, f(x) = {{ result_data.0.1|floatformat:6 }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+.styles{
+    text-align: center;
+    color: white;
+    background: linear-gradient(to bottom, #000000, #999999);
+}
+
+/* Estilos para la cuadrícula */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 20px; /* Espacio entre celdas */
+}
+
+/* Estilos para las celdas de la cuadrícula */
+.grid-item {
+    font-size: 20px;
+    background-color: #999999;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}

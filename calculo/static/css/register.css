@@ -1,0 +1,44 @@
+su
+
+/* Estilos para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+input{
+    border-radius: 10px;
+}
+
+button {
+    margin:auto;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.register {
+    color:#fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    background: linear-gradient(to bottom, #000000, #999999);
+}
+
+p{
+  width: 100%;  
+  margin: auto;
+}
+.img {
+    display: flex;
+    width: 100px;
+    margin: auto;
+}
