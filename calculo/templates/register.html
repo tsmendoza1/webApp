@@ -6,26 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link rel="stylesheet" type='text/css' href="{% static 'css/register.css' %}">
+    <a href="{% url 'login' %}" class="back">Regresar</a>
+    <style>
+        body {
+            width: 100%;
+            background-image: url("{% static 'images/fondoLogin2.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .back{
+            color: white;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        .img {
+            display: flex;
+            width: 150px;
+            margin: auto;
+        }
+        .blur{
+            backdrop-filter: blur(5px); /* Ajusta el valor según tus preferencias */
+            background-color: rgba(255, 255, 255, 0.3); /* Ajusta el valor de alfa según tus preferencias */
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            border: 1px solid white;
+        }
+        .container{
+            width: 100%;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        .center-text{
+            text-align: center;
+        }
+        input{
+            border-radius: 10px;
+        }
+        button {
+            margin: auto;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
 {% block content %}
+<div class="container">
     <p> <img src="{% static 'images/log-img.png' %}" alt="Mi Imagen" class="img"> </p>
-<h1 class="center-text">Regístrate</h1>
-<form class="form" method="post" action="{% url 'register' %}" style="
-    display: flex;
-    flex-direction: column;">
-    {% csrf_token %}
-    <label for="usuario">Crea un usuario:</label>
-    <input type="text" name="usuario" required>
-    <br>
-    <label for="password">Crea una contraseña:</label>
-    <input type="password" name="password" required>
-    <br>
-    <label for="password-r">Repite la contraseña:</label>
-    <input type="password" name="password-r" required>
-    <br>
-    <button type="submit"> Registrarse </button>
-</form>
+    <h1 class="center-text">Regístrate</h1>
+    <form class="blur" method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <label for="usuario">Crea un usuario:</label>
+        <input type="text" name="usuario" required>
+        <br>
+        <label for="password">Crea una contraseña:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label for="password-r">Repite la contraseña:</label>
+        <input type="password" name="password-r" required>
+        <br>
+        <button type="submit"> Registrarse </button>
+    </form>
+</div>    
 {% endblock %}
 </body>
 </html>
