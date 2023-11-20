@@ -12,6 +12,8 @@
             color:#fff;
             height: 100vh; 
             width: 100%;
+            display: flex;
+            flex-direction: column;
             background-image: url("{% static 'images/fondoR.png' %}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -60,7 +62,7 @@
         <a href="{% url 'limits' %}" class="item-menu blur"> Limites </a>
         <a href="{% url 'graphics' %}" class="item-menu blur"> Graficos </a>
     </div>
-    <div class="calculadora">
+    <div class="calculadora blur">
         <h1>Calculadora de Límites</h1>
     
         <form method="post">

@@ -17,6 +17,8 @@
         body{
             height: 100%;
             width: 100%;
+            display: flex;
+            flex-direction: column;
             background-image: url("{% static 'images/fondoR.png' %}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -47,19 +49,21 @@
     </style>
 </head>
 <body>
-    <h1>Calculadora de Derivadas</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Calcular Derivada">
-    </form>
-
-    {% if result_data %}
-    <div>
-        <h2>Resultado</h2>
-        <p>Derivada: {{ result_data }}</p>
+    <div class="blur">
+        <h1>Calculadora de Derivadas</h1>
+    
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Calcular Derivada">
+        </form>
+    
+        {% if result_data %}
+        <div>
+            <h2>Resultado</h2>
+            <p>Derivada: {{ result_data }}</p>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </body>
 </html>
