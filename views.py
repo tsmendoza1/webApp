@@ -17,22 +17,18 @@ def home(request):
 
 def derivatives(request):
     result_data = None
-
     if request.method == 'POST':
         form = DerivativeCalculatorForm(request.POST)
         if form.is_valid():
             function_expression = form.cleaned_data['function']
-
             try:
                 f = sympy.sympify(function_expression)
                 derivative = sympy.diff(f)
                 result_data = str(derivative)
             except (ValueError, sympy.SympifyError):
                 result_data = 'Función no válida'
-
     else:
         form = DerivativeCalculatorForm()
-
     return render(request, 'derivatives.html', {'form': form, 'result_data': result_data})
 
 def factor(request):
@@ -44,7 +40,6 @@ def function(request):
 def graphics(request):
     x = np.linspace(-10, 10, 400)
     y = 3 / x
-
     # Crear el gráfico
     plt.figure(figsize=(8, 6))
     plt.plot(x, y, label='f(x) = 3/x', color='blue')
@@ -55,14 +50,12 @@ def graphics(request):
     plt.title('Gráfico de f(x) = 3/x')
     plt.grid(True)
     plt.legend()
-
     # Convertir el gráfico en una imagen
     buffer = io.BytesIO()
     plt.savefig(buffer, format='png')
     buffer.seek(0)
     grafico = base64.b64encode(buffer.read()).decode()
     plt.close()
-
     return render(request, 'graphics.html', {'grafico': grafico})
 
 def calcular_f(x):
@@ -70,25 +63,19 @@ def calcular_f(x):
 
 def limits(request):
     result_data = None
-
     if request.method == 'POST':
         form = LimitCalculatorForm(request.POST)
         if form.is_valid():
             x = form.cleaned_data['x_value']
             function_expression = form.cleaned_data['function']
-
             try:
-                # Intenta evaluar la función ingresada por el usuario
                 f = sympy.sympify(function_expression)
                 fx = f.subs('x', x)
                 result_data = [(x, fx)]
             except (ValueError, sympy.SympifyError):
-                # Maneja errores si la función no es válida
                 result_data = [('Error', 'Función no válida')]
-
     else:
         form = LimitCalculatorForm()
-
     return render(request, 'limits.html', {'form': form, 'result_data': result_data})
 
 def radicals(request):
@@ -101,7 +88,6 @@ def login(request):
         try:
             user = Usuario.objects.get(username=usuario)
             if user.password == password:
-                # El usuario se autenticó correctamente, inicia sesión y redirige a la página de inicio
                 django_login(request, user)
                 return redirect('home')
             else:
@@ -119,17 +105,13 @@ def logout(request):
 
 def register(request):
     if request.method == 'POST':
-        # Obtener los datos del formulario
         usuario = request.POST.get('usuario')
         password = request.POST.get('password')
-
         if usuario and password:
-            # Verificar si el usuario ya existe
             if Usuario.objects.filter(username=usuario).exists():
                 print('El nombre de usuario ya está en uso.')
                 messages.error(request, 'El nombre de usuario ya está en uso.')
             else:
-                # Crear un nuevo usuario y guardarlo en tu modelo personalizado
                 nuevo_usuario = Usuario(username=usuario, password=password)
                 nuevo_usuario.save()
                 print('Usuario Registrado')
@@ -138,5 +120,4 @@ def register(request):
         else:
             messages.error(request, 'Es necesario llenar todos los campos')
             print('Es necesario llenar todos los campos')
-
     return render(request, 'register.html')
