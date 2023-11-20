@@ -6,14 +6,49 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type='text/css' href="{% static 'css/log.css' %}">
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-image: url("{% static 'images/fondoLogin2.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        form{
+            width: 100%;
+            flex-flow: column;
+            color: black;
+            font-variant-caps: petite-caps;
+        }
+        .blur{
+            backdrop-filter: blur(5px); /* Ajusta el valor según tus preferencias */
+            background-color: rgba(255, 255, 255, 0.3); /* Ajusta el valor de alfa según tus preferencias */
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            border: 1px solid white;
+        }
+        .container{
+            width: 100%;
+            margin: 35%
+        }
+    </style>
 </head>
 <body>
 {% block content %}
 <p> <img src="{% static 'images/log-img.png' %}" alt="Mi Imagen" class="img"> </p>
-<h1 class="center-text">Iniciar Sesión</h1>
-<form class="form" method="post" action="{% url 'login' %}" style="
-display: flex;
-flex-direction: column;">
+<h1 style="text-align: center; color: black;">Iniciar Sesión</h1>
+<form class="blur" method="post" action="{% url 'login' %}" style="
+    display: flex;
+    flex-direction: column;">
     {% csrf_token %}
     <label for="usuario">Usuario:</label>
     <input type="text" name="usuario" required>
@@ -23,7 +58,7 @@ flex-direction: column;">
     <br>
     <button type="submit"> Iniciar sesión </button>
     <br>
-    <a style="margin: auto; color: white;" href="{% url 'register' %}">¡Regístrate!</a>
+    <a style="margin: auto; color: blue;" href="{% url 'register' %}">¡Regístrate!</a>
 </form>
 {% endblock %}
 </body>

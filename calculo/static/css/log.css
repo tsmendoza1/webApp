@@ -1,5 +1,6 @@
-su
-
+.center-text{
+    text-align: center;
+}
 /* Estilos para el formulario */
 form {
     display: flex;
@@ -39,6 +40,6 @@ p{
 }
 .img {
     display: flex;
-    width: 100px;
+    width: 150px;
     margin: auto;
 }
